@@ -1,0 +1,430 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fef3fe04-0963-4a88-8884-f578ea0dd967",
+      "name": "Webhook",
+      "webhookId": "e4775b9c-a380-4a5e-b2da-006af22c0d62"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9bf66605-89e4-4653-8a21-b34620310572",
+              "name": "Name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "1cfa076e-5f92-49cb-9271-117495a7e484",
+              "name": "Email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "1a54b70d-efbc-4704-a511-776ba7561fdb",
+              "name": "Company ",
+              "value": "={{ $json.body.companyName }}",
+              "type": "string"
+            },
+            {
+              "id": "fa3d2555-2079-48c8-b825-5dae718d0d35",
+              "name": "Interested Service ",
+              "value": "={{ $json.body.interestedService }}",
+              "type": "string"
+            },
+            {
+              "id": "f2273a90-01dc-4270-ab77-7d4c6d2145f7",
+              "name": "Message ",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "a4951a69-9af8-4b9e-b17c-a2c70b7d65d9",
+              "name": "SubmittedAt",
+              "value": "={{ $json.body.submittedAt }}",
+              "type": "string"
+            },
+            {
+              "id": "e05b972c-3f2d-44e6-8c44-8bd685530ed0",
+              "name": "Source ",
+              "value": "={{ $json.body.source }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "0d45b6e7-b17e-4b0a-bc79-c458b5558714",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls",
+          "mode": "list",
+          "cachedResultName": "Joy AI Lead Management.",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Lead_IDName": "={{ $json.Name }}",
+            "Company_Name": "={{ $json['Company '] }}",
+            "Email": "={{ $json.Email }}",
+            "Interested_Service": "={{ $json['Interested Service '] }}",
+            "Message": "={{ $json['Message '] }}",
+            "Submission_Date": "={{ $json.SubmittedAt }}",
+            "Email_Sent_At": "={{ $json['Source '] }}",
+            "Email_Status": "pending "
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Lead_IDName",
+              "displayName": "Lead_IDName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company_Name",
+              "displayName": "Company_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Interested_Service",
+              "displayName": "Interested_Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submission_Date",
+              "displayName": "Submission_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email_Status",
+              "displayName": "Email_Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email_Sent_At",
+              "displayName": "Email_Sent_At",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        0
+      ],
+      "id": "b4e3a349-266d-4280-a2fd-41f4303f5b46",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ml0bGscf5hKA7c6T",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "Thank You for Contacting Us!",
+        "message": "=<h2>Hello {{$json.Lead_IDName}},</h2>\n\n<p>Thank you for contacting Joy Talukder AI Automation Services!</p>\n\n<p>We have successfully received your inquiry about <strong>{{$json.Interested_Service}}</strong>.</p>\n\n<p>Our team will review your requirements and contact you shortly.</p>\n\n<p>We appreciate your interest in our services.</p>\n\n<p>Best Regards,<br>\nJoy Talukder<br>\nAI Automation Specialist</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "1b604110-afd8-4c5d-b3e5-98143a0633e0",
+      "name": "Send a message",
+      "webhookId": "0b64bac8-5b90-4cf8-bf17-818a3c395d7b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1qdWopAmXYgpCJZo",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls",
+          "mode": "list",
+          "cachedResultName": "Joy AI Lead Management.",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QQnslpPKuy8FHnwMaoUZG18Pd6rdciYeX6IM_op-8Ls/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email_Status": "={{ $json.labelIds[0] }}",
+            "Email_Sent_At": "={{ $now.toISO() }}",
+            "Email": "={{ $('Edit Fields').item.json.Email }}"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Lead_IDName",
+              "displayName": "Lead_IDName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Company_Name",
+              "displayName": "Company_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Interested_Service",
+              "displayName": "Interested_Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submission_Date",
+              "displayName": "Submission_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email_Status",
+              "displayName": "Email_Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email_Sent_At",
+              "displayName": "Email_Sent_At",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        800,
+        0
+      ],
+      "id": "add676ee-95ee-4b2b-893b-c92d15c772b0",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ml0bGscf5hKA7c6T",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "c127d821-5d5d-4a4b-b435-063643a8c4b9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3e69f92a2d1889be9e19a32cbabd36c469c027ad611f5bcaf463ad5b2e0bd734"
+  },
+  "nodeGroups": [],
+  "id": "Gqi8EjXevHW06oZM",
+  "tags": []
+}
